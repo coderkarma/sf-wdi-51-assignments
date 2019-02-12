@@ -13,6 +13,8 @@ app.use((req, res, next) => {
 
 // MIDDLEWARE
 app.use(express.static(__dirname + '/public'));
+// server.js
+app.use(express.static('vendor'));
 console.log('Sanity Check: JS is working!');
 
 // Making the get resquest at homepage and getting response hello world
@@ -22,8 +24,7 @@ app.get('/', (req, res) =>
   })
 );
 
-const albums = [
-  {
+const albums = [{
     title: 'Cupid Deluxe',
     artist: 'Blood Orange'
   },
@@ -42,8 +43,7 @@ app.get('/api/albums', (req, res) => {
 });
 
 //  Taquerias data
-const taquerias = [
-  {
+const taquerias = [{
     name: 'La Taqueria'
   },
   {
