@@ -1,0 +1,24 @@
+
+ https://protfolio2019.netlify.com
+ Deployed on the internet on netlify plateform.
+ It was fairly simple to deploy it.
+ 
+Technologies used 
+HTML5, CSS, Jquery, Javascripts, Animations Plugin
+
+Sketch out the layout
+started with barebone html and CSS
+
+
+Quite interesting section for me was working on testimonial section and 
+trying to figure it out how to implement images and paragraph dynamically.
+
+
+Challenges
+Working with weather api and and trying to figure things out was quite challenging. 
+
+
+biggest win 
+Getting weather update.
+Going through documentation and looking people's code and try to understand what the code is doing under the hood.
+understanding the people's code and writing breaking things down.

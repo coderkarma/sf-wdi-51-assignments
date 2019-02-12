@@ -1,0 +1,48 @@
+/*  parent container as a display flex */
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+ h1 {
+     text-align: center;
+ }
+ button {
+    margin: auto;
+ }
+.categories {
+    /* giving div about 2/3 of parent div */
+    border: 1px solid green;
+    align-items: center;
+     background: lightblue; 
+    flex: 1;
+
+}
+.shopping-cart {
+    flex: 1;
+    height: 100vh;
+   
+}
+
+#images {
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+
+/* making images column */
+.flex-column {
+    background: green;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+    align-items: center;
+}
+
+
+img {
+    width: 200px;
+    height: 250px;
+    margin: 1em;
+}
