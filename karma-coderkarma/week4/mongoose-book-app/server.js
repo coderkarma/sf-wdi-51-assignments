@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
   });
 });
 
-// get all books
+// // get all books
 app.get('/api/books', (req, res) => {
   //send all our book as a json response
   db.Book.find((err, foundBooks) => {
@@ -49,35 +49,15 @@ app.get('/api/books', (req, res) => {
   });
 });
 
-// get all books
-app.get('/api/books', function (req, res) {
-  // send all books as JSON response
-  db.Book.find()
-    // populate fills in the author id with all the author data
-    .populate('author')
-    .exec(function (err, books) {
-      if (err) {
-        console.log("index error: " + err);
-      }
-      res.json(books);
-    });
-});
-db.Author.findOne({
-  name: req.body.author
-}, (err, author) => {
-  newBook.author = author;
-  newBook.save((err, book) => {
-    if (err) return console.log(`create err: ${err}`);
-    console.log(`created ${book.title}`);
-    res.json(book)
-  })
 
-})
+// Dalton instructions
+
+
 
 
 // //////////////////////////////
 // get one book
-app.get('/api/books/:id', function (req, res) {
+app.get('/api/books/:id', (req, res) => {
   // find one book by its id
   db.Book.findOne({
     _id: (req.params.id)
@@ -86,18 +66,22 @@ app.get('/api/books/:id', function (req, res) {
       console.log("this is not the book you're looking for");
     }
     res.json(foundBook);
-  });
+  }).populate('author').exec((err, foundBook) => {
+    if (err) return console.log(err);
+    res.json(foundBook);
+  })
 });
 
 // create new book
 app.post('/api/books', function (req, res) {
   // create new book with form data (`req.body`)
-  const newBook = new db.Book({
+  let newBook = new db.Book({
     title: req.body.title,
     author: req.body.author,
     image: req.body.image,
     date: req.body.date
   })
+  console.log(newBook)
   //save to db
   newBook.save((err, book) => {
     if (err) {
