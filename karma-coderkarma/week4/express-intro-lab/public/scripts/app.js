@@ -3,7 +3,7 @@ console.log("Sanity Check: JS is working!");
 const handleSuccess = json => {
   // console.log(json)
   for (let i = 0; i < json.length; i++) {
-
+    
     let title = json[i].title;
 
     let artist = json[i].artist;

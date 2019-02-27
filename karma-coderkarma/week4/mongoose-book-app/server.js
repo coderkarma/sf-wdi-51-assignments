@@ -50,11 +50,6 @@ app.get('/api/books', (req, res) => {
 });
 
 
-// Dalton instructions
-
-
-
-
 // //////////////////////////////
 // get one book
 app.get('/api/books/:id', (req, res) => {
