@@ -8,16 +8,19 @@ class App extends Component {
   };
 
   increment = () => {
-    let counter = this.state.counter + 1;
+    // let counter = this.state.counter + 1;2
     this.setState({
-      counter
+      counter: this.state.counter + 1
     });
   };
 
   decrement = () => {
-    let counter = this.state.counter - 1;
-    this.setState({ counter });
+    // let counter = this.state.counter - 1;
+    this.setState({ 
+      counter: this.state.counter -1
+     });
   };
+
 
   render() {
     return (
