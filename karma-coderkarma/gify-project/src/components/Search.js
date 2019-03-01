@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 class Search extends Component {
   render() {
     return (
-      <div>
+      <form onSubmit={this.props.search}>
         <label>
           Search
-          <input type="text"  placeholder="Find cool giphy"/>
+          <input
+            onChange={this.props.onSearch}
+            type="text"
+            placeholder="Find cool giphy"
+          />
         </label>
-        <input onSubmit={this.search} type="submit" />
-      </div>
+        <input type="submit" />
+      </form>
     );
   }
 }

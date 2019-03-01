@@ -10,41 +10,47 @@ class SearchContainer extends Component {
     gifs: []
   };
 
-  componentDidMount() {
-    this.search();
-  }
+  onSearch = e => {
+    this.setState({
+      query: e.target.value
+    });
+  };
 
-  search = () => {
+  search = e => {
+    e.preventDefault();
     axios
       .get(
-        'http://api.giphy.com/v1/gifs/trending?api_key=c82diwDEqDrm7rTiFQpXKdpBVKBb0cXH'
+        `https://api.giphy.com/v1/gifs/search?api_key=c82diwDEqDrm7rTiFQpXKdpBVKBb0cXH&q=${
+          this.state.query
+        }&limit=25&offset=0&rating=G&lang=en`
       )
       .then(response => {
-        console.log('response', response);
+        // console.log('response', response);
         this.setState({
           gifs: response.data.data
         });
+        console.log('after assigning axios to state', this.state.gifs);
       })
       .then(error => console.log('error', error));
   };
 
   render() {
     let gifs = this.state.gifs.map((gif, index) => {
-      let images = gif.images.downsized;
+      let images = gif.images.downsized.url;
       let title = gif.title;
       return (
-        // <div>
-        //   <p>{images}</p>
-        //   <p>{title}</p>
-        // </div>
-        {gifs}
+        <div>
+          <img src={images} alt="gif" />
+          <p>{title}</p>
+        </div>
       );
     });
     // console.log(gifs)
     return (
       <div>
-        <Search />
+        <Search onSearch={this.onSearch} search={this.search} />
         <Result gif={this.state.gifs} />
+        {gifs}
       </div>
     );
   }
