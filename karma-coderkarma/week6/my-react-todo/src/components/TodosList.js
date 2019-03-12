@@ -7,19 +7,15 @@ class TodosList extends Component {
     let todos = this.props.todos.map(todo => {
       return (
         <Todo
-          //key unique identifier from JSON response (Mongo generated)
           key={todo._id}
           todo={todo}
+          deleteTodo={this.props.deleteTodo}
+          updateTodo={this.props.updateTodo}
         />
       );
     });
 
-    return (
-      <ul>
-        {/* return all todos as unordered list object*/}
-        {todos}
-      </ul>
-    );
+    return <ul>{todos}</ul>;
   }
 }
 
