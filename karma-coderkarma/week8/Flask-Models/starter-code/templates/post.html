@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Post</h1>
+<article class="message is-primary">
+    <div class="message-header">
+        <a href={{url_for('posts', id=post.id)}}>{{post.title}}</a>
+
+        <p>By: {{post.user}}</p>
+    </div>
+    <div class="message-body">
+        {{post.text}}
+    </div>
+    <a>r/{{post.sub}}</a>
+</article>
+
+<section>
+    <h2>Add a Comment on this post</h2>
+    <form method="POST" action="/posts/{{post.id}}" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.title.label }}
+            {{ form.title() }}
+        </div>
+        <div>
+            {{ form.text.label }}
+            {{ form.text() }}
+        </div>
+        <div>
+            {{ form.user.label("Post By:") }}
+            {{ form.user() }}
+        </div>
+
+        {{ form.submit() }}
+    </form>
+</section>
+
+
+{% endblock %}
